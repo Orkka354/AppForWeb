@@ -1,6 +1,8 @@
 {
   "name": "NightFood",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "ea3527e1"
 }

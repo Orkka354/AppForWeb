@@ -4,15 +4,7 @@ var initialPos = {
     lat: -30,
     lng: 40.0
 }
-function initMap(){
-    map = new google.maps.Map(document.getElementById("map"),{
-        center: initialPos,
-        zoom: 1,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
-    infoWindow = new google.maps.InfoWindow;
-    updateLocations();
-}
+
 function updateLocations(){
     var arrayLength = locationDataArray.length;
     var pos;
@@ -21,7 +13,17 @@ function updateLocations(){
         map.setCenter(pos);
         map.setZoom(4);
     }
-    
+function initMap(){
+    map = new google.maps.Map(document.getElementById("map"),{
+        center: initialPos,
+        zoom: 1,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    infoWindow = new google.maps.InfoWindow;
+//updateLocations();
+}
+
+
 }
 function addMarker(map,location){
     // location is an object with position, text and picture
@@ -33,7 +35,7 @@ function addMarker(map,location){
         position: pos,
         map: map
     })
-    var contentString = '<div class="info-window id="clickableItem" '+'<h3>' + location.title + '</h3>' + '<div class = "info-content">' + '<img src=' + location.picture + ' alt="picture" style="width:30px; height: 30px; padding: 20px,20px, 20px,20px; ">' +
+    var contentString = '<div class="info-window id="clickableItem" '+'<h3>' + location.title + '</h3>' + '<div class = "info-content">' + '<img src=' + location.picture + ' alt="picture" style="width:30px; height: 30px; padding: 20px,20px, 20px, 20px;">' +
     '<p>' + location.content + ' </p>'+
     '</div>' +
     '</div>';
@@ -51,7 +53,7 @@ function addMarker(map,location){
             loadViewPage(location);
         });
     });
-    
+
 }
 function loadViewPage(location){
     localStorage.setItem("currentLocTitle", location.title);
